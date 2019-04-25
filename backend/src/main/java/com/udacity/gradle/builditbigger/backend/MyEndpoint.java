@@ -10,7 +10,7 @@ import com.example.android.libjavajokesprovider.Joker;
 
 /** An endpoint class we are exposing */
 @Api(
-        name = "myApi",
+        name = "jokeApi",
         version = "v1",
         namespace = @ApiNamespace(
                 ownerDomain = "backend.builditbigger.gradle.udacity.com",
@@ -21,12 +21,12 @@ import com.example.android.libjavajokesprovider.Joker;
 public class MyEndpoint {
 
     /** A simple endpoint method that takes a category and send a joke back */
-    @ApiMethod(name = "sayHi")
-    public MyBean sayHi(@Named("name") String name) {
+    @ApiMethod(name = "retrieveJoke")
+    public MyBean retrieveJoke(@Named("category") String category) {
         MyBean response = new MyBean();
 
         Joker myJoker = new Joker();
-        String joke = myJoker.getJoke(name);
+        String joke = myJoker.getJoke(category);
 
         response.setData(joke);
 

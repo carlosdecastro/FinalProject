@@ -20,13 +20,20 @@ public class JokeAsyncTaskTest {
     @Test
     public void testJokeAsyncTask() throws Throwable {
 
-        JokeAsyncTask task = new JokeAsyncTask();
+        JokeAsyncTask task = new JokeAsyncTask(new JokeAsyncTask.JokeRetrieveListener() {
+            @Override
+            public void onJokeRetrieveListener(String result) {
+
+            }
+        });
 
         try {
             task.execute(new Pair<Context, String>(mActivityRule.getActivity(), "ANIMALS"));
             String joke = task.get();
 
-            assertTrue(!joke.isEmpty());
+            assertNotNull(joke);
+            assertFalse(joke.isEmpty());
+
 
         } catch (InterruptedException ie) {
             fail("Error");

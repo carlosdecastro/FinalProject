@@ -1,6 +1,8 @@
 package com.udacity.gradle.builditbigger;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.util.Pair;
@@ -10,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+
+import com.udacity.gradle.libandroidjokesviewer.JokesViewerActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -56,13 +60,29 @@ public class MainActivityFragment extends Fragment implements JokesCategoryAdapt
     }
 
 
+    @SuppressWarnings("unchecked")
     @Override
     public void onListItemClick(String clickedCategory) {
 
         categoryRV.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
 
-        new JokeAsyncTask().execute(new Pair<Context, String>(context, clickedCategory));
+        new JokeAsyncTask(new JokeAsyncTask.JokeRetrieveListener() {
+            @Override
+            public void onJokeRetrieveListener(String result) {
+                if (result != null) {
+                    Intent intent = new Intent(context, JokesViewerActivity.class);
+                    intent.putExtra(context.getString(R.string.joke), result);
+
+                    ProgressBar progressBar = ((Activity) context).findViewById(R.id.joke_progress_bar);
+                    progressBar.setVisibility(View.GONE);
+                    RecyclerView categoryRv = ((Activity) context).findViewById(R.id.rvJokesCategory);
+                    categoryRv.setVisibility(View.VISIBLE);
+
+                    context.startActivity(intent);
+                }
+            }
+        }).execute(new Pair<Context, String>(context, clickedCategory));
 
 
     }

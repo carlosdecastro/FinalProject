@@ -24,8 +24,10 @@ public class JokesViewerActivity extends AppCompatActivity {
 
         // If there is and intent, get his extras and update the textView
         if (intent != null) {
-            String joke = intent.getStringExtra(getString(R.string.joke));
-            mJoke.setText(joke);
+            if (intent.hasExtra(getString(R.string.joke))) {
+                String joke = intent.getStringExtra(getString(R.string.joke));
+                mJoke.setText(joke);
+            }
         } else {
             mJoke.setText(getString(R.string.joke_error));
         }
