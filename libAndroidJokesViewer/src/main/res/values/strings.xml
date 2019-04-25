@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">libAndroidJokesViewer</string>
+    <string name="joke">JOKE</string>
+    <string name="joke_error">No joke today</string>
+</resources>

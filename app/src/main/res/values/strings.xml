@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Build it Bigger</string>
+    <string name="instructions">Press the button for a delicious joke!</string>
+    <string name="button_text">Tell Joke</string>
+    <string name="action_settings">Settings</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="joke">JOKE</string>
+    <string name="AdUnitId">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="computers">COMPUTERS</string>
+    <string name="category_animals">ANIMALS</string>
+    <string name="category_musicians">MUSICIANS</string>
+    <string name="category_kids">KIDS</string>
+    <string name="category_doctors">DOCTORS</string>
+    <string name="category_knockknock">KNOCKKNOCK</string>
+    <string name="category_marriage">MARRIAGE</string>
+</resources>
